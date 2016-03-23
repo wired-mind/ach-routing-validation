@@ -1,0 +1,27 @@
+.DS_Store
+.gradle
+.idea
+.classpath
+.project
+.settings
+.yardoc
+.yardopts
+bin
+build
+target
+out
+*.iml
+*.ipr
+*.iws
+test-output
+Scratch.java
+ScratchTest.java
+test-results
+test-tmp
+*.class
+mods
+
+# Project specific - generated code
+src/main/asciidoc/*
+src/main/generated/*
+src/main/resources/ach-routing-validation-module-js/*

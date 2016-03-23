@@ -1,0 +1,16 @@
+.DS_Store
+.gradle
+.idea
+.vertx
+build
+db
+env
+file-uploads
+
+.gitignore
+*.iml
+docker-compose.yml
+
+src/main/asciidoc
+src/main/generated
+src/main/resources/ach-routing-validation-module-js

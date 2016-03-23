@@ -1,0 +1,38 @@
+gradlecache:
+  image: busybox
+  volumes:
+    - /root/.gradle
+
+app:
+  restart: always
+  build: .
+  ports:
+    - "8082:8082"
+  volumes_from:
+    - gradlecache
+  links:
+    - postgres:postgres.dev
+  environment:
+    - HTTP_PORT: 8082
+    - DOWNLOAD_DELAY_MINUTES: 1440
+  env_file:
+    - ./env/postgres.env
+
+data:
+  restart: "no"
+  build: ./db/
+  volumes:
+    - /var/lib/postgresql
+    - /docker-entrypoint-initdb.d
+  command: "true"
+
+postgres:
+  restart: always
+  image: postgres:9.3
+  hostname: postgres.dev
+  volumes_from:
+    - data
+  ports:
+    - "5432:5432"
+  env_file:
+    - ./env/postgres.env
